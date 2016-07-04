@@ -26,23 +26,26 @@ namespace Busqueda_Final
             var a = cla_gen2.Gen_Schem.ToList();
             cla_gen.pruebas2(textBox1.Text.ToUpper().Trim());
             var b = cla_gen2.MGen_Quer.ToList();
-            if (cla_gen.t2())
-            {
-                MessageBox.Show("ready");
-            }
+            //if (cla_gen.t21()) { MessageBox.Show("ready"); }
+            if (cla_gen.t2()) { MessageBox.Show("ready"); }
             dataGridView1.DataSource = "";
-            dataGridView1.DataSource = nClas.T_Final.ToList().OrderBy(x => x.Id).ToList();
+
+            //dataGridView1.DataSource = nClas.T_Final.ToList().OrderBy(x => x.Id).ToList();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var res = nClas.T_Final.OrderBy(x => x.Id).ToList();
-            dataGridView1.DataSource = res;
+            dataGridView1.DataSource = "";
+            var testing0 = nClas.T_Final.Select(y => y.tabla).Distinct().ToList();
+            var testing = nClas.T_Final.Where(x => testing0.Contains(x.tabla)).ToList();
+
+            var testing2 = nClas.T_Final.Where(x => (nClas.T_Final.Select(y => y.tabla).Distinct().ToList()).Contains(x.tabla)).ToList();
+            dataGridView1.DataSource = testing.OrderBy(x=>x.Id).ToList().OrderBy(x=>x.tabla).ToList();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            dataGridView1.ClearSelection();
+            dataGridView1.DataSource = "";
             var res = nClas.T_error.ToList().OrderBy(x => x.consulta).ToList();
             dataGridView1.DataSource = res;
         }
