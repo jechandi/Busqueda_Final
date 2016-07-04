@@ -65,8 +65,6 @@ namespace Busqueda_Final
             comboBox2.ValueMember = "value";
         }
         
-        
-        
         private void button1_Click_1(object sender, EventArgs e)
         {
             if (Op_Prod.Checked)

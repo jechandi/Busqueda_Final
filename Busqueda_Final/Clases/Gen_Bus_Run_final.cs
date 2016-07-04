@@ -27,6 +27,7 @@ namespace Busqueda_Final.Clases
         public static nClas tes = new nClas();
         public SqlDataReader reader1;
         public SqlCommand command1;
+        public ProgressBar pb;
 
         //threading
         Thread sql0;
@@ -54,61 +55,79 @@ namespace Busqueda_Final.Clases
         }
         public bool t21()
         {
-            var tot0 = tes.MGen_Quer.Count();// / 10;
-            var tot = tot0 / 10;
+            var tot = tes.MGen_Quer.Count() / 10;
 
             Thread.Sleep(0);
 
-            //1
             sql0 = new Thread(() => t3(tes.MGen_Quer.Take(tot).ToList()));
             sql0.Start();
 
-            //2
             sql1 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 1).Take(tot).ToList()));
             sql1.Start();
 
-            //3
             sql2 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 2).Take(tot).ToList()));
             sql2.Start();
 
-            //4
             sql3 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 3).Take(tot).ToList()));
             sql3.Start();
 
-            //5
             sql4 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 4).Take(tot).ToList()));
             sql4.Start();
 
-            //6
             sql5 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 5).Take(tot).ToList()));
             sql5.Start();
 
-            //7
             sql6 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 6).Take(tot).ToList()));
             sql6.Start();
 
-            //8
             sql7 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 7).Take(tot).ToList()));
             sql7.Start();
 
-            //9
             sql8 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 8).Take(tot).ToList()));
             sql8.Start();
 
-            //10
             sql9 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 9).Take(tot).ToList()));
             sql9.Start();
 
             return true;
         }
 
+        public bool t22()
+        {
+            pb.Value = 0;
+            var tot = tes.MGen_Quer.Count() / 10;
+            Thread[] ts = new Thread[10];
+            Thread.Sleep(0);
+
+            for (int i = 0; i < 10; i++)
+            {
+                int ski = tot * i;
+                ts[i] = new Thread(() => t3(tes.MGen_Quer.Skip(ski).Take(tot).ToList()));
+                ts[i].Start();
+                ts[i].Join();
+                
+                pb.Increment(10);
+            }
+
+            return true;
+        }
+
+        public bool t23()
+        {
+            var tot = tes.MGen_Quer.Count() / 10;
+            Thread.Sleep(0);
+
+            for (int i = 0; i < 10; i++)
+            {
+                int ski = tot * i;
+                new Thread(new ThreadStart(() => t3(tes.MGen_Quer.Skip(ski).Take(tot).ToList()))).Start();
+            }
+            return true;
+        }
+
         public void pruebas1()
         {
-            tes.Gen_Schem.Clear();
-            tes.MGen_Quer.Clear();
-            tes.pruebas33.Clear();
-            nClas.T_Final.Clear();
-            nClas.T_error.Clear();
+            tes.Gen_Schem.Clear();tes.MGen_Quer.Clear();tes.pruebas33.Clear();nClas.T_Final.Clear();nClas.T_error.Clear();
             Busqueda_Final.Clases.tcon2 newt = new tcon2();
             
             string srtQry = "SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE, ORDINAL_POSITION FROM " + tcon2.DB2 + ".INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME LIKE 'T%' ORDER BY TABLE_NAME, ORDINAL_POSITION";
@@ -178,7 +197,6 @@ namespace Busqueda_Final.Clases
                         catch (Exception ex){
                             nClas.T_error.Add(new Terror { error = ex.ToString(), tabla = x.tabla.ToString(), consulta = x.consulta.ToString(), });
                         }}
-                    
                 }
                 catch (Exception ex)
                 {

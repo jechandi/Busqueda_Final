@@ -15,8 +15,10 @@ namespace Busqueda_Final
     {
         Gen_Bus_Run_final cla_gen = new Gen_Bus_Run_final();
         nClas cla_gen2 = new nClas();
+
         public Form1()
         {
+            
             InitializeComponent();
         }
 
@@ -27,9 +29,13 @@ namespace Busqueda_Final
             cla_gen.pruebas2(textBox1.Text.ToUpper().Trim());
             var b = cla_gen2.MGen_Quer.ToList();
             //if (cla_gen.t21()) { MessageBox.Show("ready"); }
-            if (cla_gen.t2()) { MessageBox.Show("ready"); }
-            dataGridView1.DataSource = "";
-
+            //if (cla_gen.t2()) { MessageBox.Show("ready"); }
+            if (cla_gen.t22()) { 
+                dataGridView1.DataSource = ""; 
+                dataGridView1.DataSource = nClas.T_Final.ToList().OrderBy(x => x.Id).ToList(); 
+            }
+            
+            
             //dataGridView1.DataSource = nClas.T_Final.ToList().OrderBy(x => x.Id).ToList();
         }
 
@@ -54,7 +60,10 @@ namespace Busqueda_Final
         {
             this.Close();
         }
-
         
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            cla_gen.pb = progressBar1;
+        }
     }
 }
