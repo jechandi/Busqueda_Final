@@ -40,20 +40,19 @@ namespace Busqueda_Final.Clases
         Thread sql8;
         Thread sql9;
 
-        //public bool t2()
-        //{
-        //    var tot = tes.MGen_Quer.Count() / 10;
-        //    var tot2 = tes.MGen_Quer.Count() / tot;
-
-        //    Thread.Sleep(0);
-        //    sql0 = new Thread(() => t3(tes.MGen_Quer.Take(tot).ToList()));
-        //    sql0.Start();
-
-        //    sql1 = new Thread(() => t3(tes.MGen_Quer.Skip(tot).Take(tot).ToList()));
-        //    sql1.Start();
-        //    return true;
-        //}
         public bool t2()
+        {
+            var tot = tes.MGen_Quer.Count() / 2;
+
+            Thread.Sleep(0);
+            sql0 = new Thread(() => t3(tes.MGen_Quer.Take(tot).ToList()));
+            sql0.Start();
+
+            sql1 = new Thread(() => t3(tes.MGen_Quer.Skip(tot).Take(tot).ToList()));
+            sql1.Start();
+            return true;
+        }
+        public bool t21()
         {
             var tot0 = tes.MGen_Quer.Count();// / 10;
             var tot = tot0 / 10;
@@ -100,24 +99,16 @@ namespace Busqueda_Final.Clases
             sql9 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 9).Take(tot).ToList()));
             sql9.Start();
 
-
-
-
-
-
-            //sql0 = new Thread(() => t3(tes.MGen_Quer.Take(tot).ToList()));
-            //sql0.Start();
-            //for (int i = 1; i < 10; i++)
-            //{
-            //    sql1 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * i).Take(tot).ToList()));
-            //    sql1.Start();
-            //}
-
             return true;
         }
-        
+
         public void pruebas1()
         {
+            tes.Gen_Schem.Clear();
+            tes.MGen_Quer.Clear();
+            tes.pruebas33.Clear();
+            nClas.T_Final.Clear();
+            nClas.T_error.Clear();
             Busqueda_Final.Clases.tcon2 newt = new tcon2();
             
             string srtQry = "SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE, ORDINAL_POSITION FROM " + tcon2.DB2 + ".INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME LIKE 'T%' ORDER BY TABLE_NAME, ORDINAL_POSITION";
