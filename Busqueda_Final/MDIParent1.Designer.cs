@@ -51,13 +51,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(632, 73);
+            this.panel1.Size = new System.Drawing.Size(689, 73);
             this.panel1.TabIndex = 4;
             // 
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(468, 12);
+            this.button2.Location = new System.Drawing.Point(349, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(60, 48);
             this.button2.TabIndex = 9;
@@ -68,7 +68,7 @@
             // Op_Prod
             // 
             this.Op_Prod.AutoSize = true;
-            this.Op_Prod.Location = new System.Drawing.Point(104, 44);
+            this.Op_Prod.Location = new System.Drawing.Point(266, 39);
             this.Op_Prod.Name = "Op_Prod";
             this.Op_Prod.Size = new System.Drawing.Size(77, 17);
             this.Op_Prod.TabIndex = 8;
@@ -78,7 +78,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(197, 39);
+            this.button1.Location = new System.Drawing.Point(12, 39);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(121, 21);
             this.button1.TabIndex = 7;
@@ -88,7 +88,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(326, 39);
+            this.button3.Location = new System.Drawing.Point(141, 39);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(121, 21);
             this.button3.TabIndex = 5;
@@ -99,7 +99,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(324, 12);
+            this.comboBox2.Location = new System.Drawing.Point(139, 12);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 3;
@@ -107,7 +107,7 @@
             // Op_Desa
             // 
             this.Op_Desa.AutoSize = true;
-            this.Op_Desa.Location = new System.Drawing.Point(104, 19);
+            this.Op_Desa.Location = new System.Drawing.Point(266, 14);
             this.Op_Desa.Name = "Op_Desa";
             this.Op_Desa.Size = new System.Drawing.Size(73, 17);
             this.Op_Desa.TabIndex = 2;
@@ -118,18 +118,16 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(197, 12);
+            this.comboBox1.Location = new System.Drawing.Point(12, 12);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
             // 
             // MDIParent1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 453);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(689, 453);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.IsMdiContainer = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
