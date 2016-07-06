@@ -7,3 +7,4 @@ c:\users\asoftware8\documents\visual studio 2010\Projects\Busqueda_Final\Busqued
 c:\users\asoftware8\documents\visual studio 2010\Projects\Busqueda_Final\Busqueda_Final\obj\x86\Debug\Busqueda_Final.Form1.resources
 c:\users\asoftware8\documents\visual studio 2010\Projects\Busqueda_Final\Busqueda_Final\obj\x86\Debug\Busqueda_Final.MDIParent1.resources
 C:\Users\asoftware8\Documents\Visual Studio 2010\Projects\Busqueda_Final\Busqueda_Final\obj\x86\Debug\Busqueda_Final.csprojResolveAssemblyReference.cache
+C:\Users\asoftware8\Documents\Visual Studio 2010\Projects\Busqueda_Final\Busqueda_Final\obj\x86\Debug\Busqueda_Final.Form2.resources

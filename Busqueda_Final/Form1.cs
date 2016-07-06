@@ -14,6 +14,7 @@ namespace Busqueda_Final
     public partial class Form1 : Form
     {
         Gen_Bus_Run_final cla_gen = new Gen_Bus_Run_final();
+        Gen_Bus_Run_final_2 cla_gen_2 = new Gen_Bus_Run_final_2();
         nClas cla_gen2 = new nClas();
 
         public Form1()
@@ -24,19 +25,32 @@ namespace Busqueda_Final
 
         private void button1_Click(object sender, EventArgs e)
         {
-            cla_gen.pruebas1();
-            var a = cla_gen2.Gen_Schem.ToList();
-            cla_gen.pruebas2(textBox1.Text.ToUpper().Trim());
-            var b = cla_gen2.MGen_Quer.ToList();
-            //if (cla_gen.t21()) { MessageBox.Show("ready"); }
-            //if (cla_gen.t2()) { MessageBox.Show("ready"); }
-            if (cla_gen.t22()) { 
-                dataGridView1.DataSource = ""; 
-                dataGridView1.DataSource = nClas.T_Final.ToList().OrderBy(x => x.Id).ToList(); 
+            button2.Enabled = false;
+            button3.Enabled = false;
+            if (Application.OpenForms["MDIParent1"] != null)
+            {
+                cla_gen.pruebas1();
+                cla_gen.pruebas2(textBox1.Text.ToUpper().Trim());
+                if (cla_gen.t22())
+                {
+                    dataGridView1.DataSource = "";
+                    dataGridView1.DataSource = nClas.T_Final.ToList().OrderBy(x => x.Id).ToList();
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                }
             }
-            
-            
-            //dataGridView1.DataSource = nClas.T_Final.ToList().OrderBy(x => x.Id).ToList();
+            else
+            {
+                cla_gen_2.pruebas1();
+                cla_gen_2.pruebas2(textBox1.Text.ToUpper().Trim());
+                if (cla_gen_2.t22())
+                {
+                    dataGridView1.DataSource = "";
+                    dataGridView1.DataSource = nClas.T_Final.ToList().OrderBy(x => x.Id).ToList();
+                    button2.Enabled = true;
+                    button3.Enabled = true;
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -63,7 +77,17 @@ namespace Busqueda_Final
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            cla_gen.pb = progressBar1;
+            label1.Visible = false;
+            if (Application.OpenForms["MDIParent1"] != null)
+            {
+                cla_gen.pb = progressBar1;
+                Busqueda_Final.Clases.tcon2 newt = new tcon2();
+                label1.Text = newt.connf.ToString();
+            }
+            else
+            {
+                cla_gen_2.pb = progressBar1;
+            }
         }
     }
 }
