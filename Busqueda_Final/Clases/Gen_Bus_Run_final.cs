@@ -53,62 +53,48 @@ namespace Busqueda_Final.Clases
             sql1.Start();
             return true;
         }
-        public bool t21()
-        {
-            var tot = tes.MGen_Quer.Count() / 10;
-
-            Thread.Sleep(0);
-
-            sql0 = new Thread(() => t3(tes.MGen_Quer.Take(tot).ToList()));
-            sql0.Start();
-
-            sql1 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 1).Take(tot).ToList()));
-            sql1.Start();
-
-            sql2 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 2).Take(tot).ToList()));
-            sql2.Start();
-
-            sql3 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 3).Take(tot).ToList()));
-            sql3.Start();
-
-            sql4 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 4).Take(tot).ToList()));
-            sql4.Start();
-
-            sql5 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 5).Take(tot).ToList()));
-            sql5.Start();
-
-            sql6 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 6).Take(tot).ToList()));
-            sql6.Start();
-
-            sql7 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 7).Take(tot).ToList()));
-            sql7.Start();
-
-            sql8 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 8).Take(tot).ToList()));
-            sql8.Start();
-
-            sql9 = new Thread(() => t3(tes.MGen_Quer.Skip(tot * 9).Take(tot).ToList()));
-            sql9.Start();
-
-            return true;
-        }
 
         public bool t22()
         {
             pb.Value = 0;
-            var tot = tes.MGen_Quer.Count() / 10;
-            Thread[] ts = new Thread[10];
+            int frac = 100;
+            var tot = tes.MGen_Quer.Count() / frac;
+
+            Thread[] ts = new Thread[frac];
             Thread.Sleep(0);
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < frac; i++)
             {
                 int ski = tot * i;
                 ts[i] = new Thread(() => t3(tes.MGen_Quer.Skip(ski).Take(tot).ToList()));
                 ts[i].Start();
                 ts[i].Join();
-                
-                pb.Increment(10);
+                pb.Increment(frac / 100);
             }
+            return true;
+        }
 
+        public bool t223()
+        {
+            pb.Value = 0;
+            int frac = 10;
+            var tot = tes.MGen_Quer.Count() / frac;
+
+            Thread[] ts = new Thread[frac];
+            Thread.Sleep(0);
+
+            int van = 0;
+            ts.ToList().ForEach(x =>
+            {
+                int ski = tot * van;
+                ts[van] = new Thread(() => t3(tes.MGen_Quer.Skip(ski).Take(tot).ToList()));
+                //ts[van].Start();
+                ts[van].Start();
+                ts[van].Join();
+                van++;
+                pb.Increment(frac / 100);
+            }
+            );
             return true;
         }
 
@@ -128,6 +114,7 @@ namespace Busqueda_Final.Clases
         public void pruebas1()
         {
             tes.Gen_Schem.Clear();tes.MGen_Quer.Clear();tes.pruebas33.Clear();nClas.T_Final.Clear();nClas.T_error.Clear();
+            
             Busqueda_Final.Clases.tcon2 newt = new tcon2();
             
             string srtQry = "SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE, ORDINAL_POSITION FROM " + tcon2.DB2 + ".INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME LIKE 'T%' ORDER BY TABLE_NAME, ORDINAL_POSITION";

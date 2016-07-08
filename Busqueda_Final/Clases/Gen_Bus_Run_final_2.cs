@@ -75,9 +75,9 @@ namespace Busqueda_Final.Clases
         {
             tes.Gen_Schem.Clear();tes.MGen_Quer.Clear();tes.pruebas33.Clear();nClas.T_Final.Clear();nClas.T_error.Clear();
             
-            //Busqueda_Final.Clases.tcon2 newt = new tcon2();
             Busqueda_Final.Clases.tcon3 newt = new tcon3();
             SqlConnection conn = newt.conn2();
+            //SqlConnection conn = new SqlConnection(@"Data Source=192.168.1.9;Initial Catalog=T3;User ID=devn;Password=sistemat300**;");
             
             string srtQry = "SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE, ORDINAL_POSITION FROM " + tcon2.DB2 + ".INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME LIKE 'T%' ORDER BY TABLE_NAME, ORDINAL_POSITION";
             conn.Open();
